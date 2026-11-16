@@ -1,0 +1,709 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Matthew Humphrey · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Questrial&display=swap">
+<style>
+/* Layout: one poster per project, after Matthew's own Canva mock-up.
+   Big two-line title with a small qualifier, set-up notes beside it, a wide figure
+   with offset color blocks, then datasheet + chart, then full-width write-ups.
+   Single dark look by design: the palette is his four swatches. */
+:root {
+  color-scheme: dark;
+  --bg: #2c2c3d;
+  --ink: #ffffff;
+  --text: #c3c3c3;
+  --sage: #aac6c4;
+  --indigo: #5a5988;
+  --cream: #e9e7e2;
+  --deep: #0f1015;
+  --line: rgba(255, 255, 255, 0.16);
+  --font: "Questrial", "Century Gothic", "Avenir Next", "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--font); font-size: 1.02rem; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 56px; }
+a { color: inherit; text-decoration-color: var(--sage); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; }
+h1, h2, h3, h4 { font-family: var(--font); font-weight: 400; color: var(--ink); margin: 0; }
+p { margin: 0; }
+strong { color: var(--ink); font-weight: 700; }
+.k { color: var(--sage); font-weight: 700; }
+sub, sup { line-height: 0; }
+
+/* ---------- Poster frame ---------- */
+.poster { position: relative; padding-block: 84px 72px; }
+.poster::before, .poster::after { content: ""; position: absolute; width: 5px; background: var(--sage); }
+.poster::before { left: -40px; top: 104px; height: min(46%, 560px); }
+.poster::after { right: -40px; bottom: 72px; height: min(52%, 640px); }
+
+.title { text-transform: uppercase; font-size: clamp(2.7rem, 6.6vw, 4.6rem); line-height: 0.96; letter-spacing: 0.005em; }
+.title span { display: block; }
+.title .l2 { display: flex; align-items: flex-end; gap: 0.2em; flex-wrap: wrap; }
+.title small { color: var(--sage); font-size: 0.4em; line-height: 1.05; padding-bottom: 0.16em; }
+
+.top { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 28px 56px; align-items: start; }
+.setup h3 { font-size: 1.6rem; line-height: 1.1; }
+.setup .sub { color: var(--ink); font-size: 1.1rem; margin-bottom: 14px; }
+.setup ul, ul.pts { margin: 0; padding-left: 1.1em; display: grid; gap: 10px; }
+.setup li::marker, ul.pts li::marker { color: var(--sage); }
+
+/* figure with offset color blocks */
+.plate { position: relative; isolation: isolate; margin: 48px 0 54px; }
+.plate::before, .plate::after { content: ""; position: absolute; z-index: -1; }
+.plate::before { left: 0; top: -26px; width: 50%; height: 60%; background: var(--indigo); }
+.plate::after { right: 0; bottom: -10px; width: 69%; height: 40%; background: var(--sage); }
+.plate img { display: block; width: 100%; height: auto; }
+.plate.small { margin: 30px 0 26px; }
+.plate.small::before { top: -14px; }
+.plate.small::after { bottom: -8px; }
+.onwhite { background: #fff; }
+
+figure { margin: 0; }
+figcaption, .cap { font-size: 0.88rem; line-height: 1.45; color: var(--text); margin-top: 12px; max-width: 78ch; }
+figcaption b, .cap b { color: var(--sage); font-weight: 400; }
+
+.mid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 36px 56px; align-items: start; }
+.org { font-size: 1.75rem; line-height: 1.12; color: var(--ink); }
+.disc { font-size: 1.15rem; color: var(--ink); margin-top: 22px; }
+.meta { font-size: 0.92rem; margin-top: 14px; line-height: 1.4; }
+table.spec { width: 100%; border-collapse: collapse; margin-top: 12px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+table.spec td { padding: 3px 0; vertical-align: top; }
+table.spec tr:first-child td { padding-top: 12px; }
+table.spec tr:last-child td { padding-bottom: 12px; }
+table.spec td:last-child { text-align: right; color: var(--ink); }
+table.spec tr.key td { color: var(--sage); font-weight: 700; }
+.summary { margin-top: 16px; }
+
+.block { margin-top: 64px; }
+.block > h3, .col > h3 { font-size: 2rem; line-height: 1.1; margin-bottom: 22px; }
+.col > h3 { font-size: 1.6rem; margin-bottom: 14px; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px 56px; align-items: start; }
+.two > *, .mid > *, .top > * { min-width: 0; }
+.prose { display: grid; gap: 14px; max-width: 70ch; }
+
+dl.issues { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 26px 56px; }
+dl.issues.one { grid-template-columns: minmax(0, 1fr); }
+dl.issues dt { color: var(--ink); font-size: 1.12rem; }
+dl.issues dd { margin: 4px 0 0; }
+
+.tablewrap { overflow-x: auto; }
+table.data { border-collapse: collapse; width: 100%; min-width: 580px; font-size: 0.94rem; font-variant-numeric: tabular-nums; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+table.data th { text-align: left; font-weight: 400; color: var(--ink); padding: 10px 16px 8px 0; border-bottom: 1px solid var(--ink); }
+table.data td { padding: 7px 16px 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.data tr:last-child td { border-bottom: 0; }
+table.data .n { text-align: right; white-space: nowrap; }
+table.data tr.key td { color: var(--sage); font-weight: 700; }
+.note { font-size: 0.86rem; margin-top: 10px; max-width: 78ch; }
+
+/* charts */
+.legend { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--ink); background: var(--deep); padding: 3px 10px 3px 8px; }
+.legend i { width: 9px; height: 9px; border-radius: 50%; }
+.chart { width: 100%; height: auto; display: block; }
+.chart text { font-family: var(--font); font-size: 11.5px; fill: var(--text); }
+.chart .lab { font-size: 12.5px; fill: var(--ink); }
+.chart .val { fill: var(--ink); }
+.chart .sagef { fill: var(--sage); }
+.chart .indf { fill: var(--indigo); }
+.chart .creamf { fill: var(--cream); }
+.chart .ax { stroke: var(--text); stroke-width: 1; fill: none; }
+.chart .grid { stroke: var(--line); stroke-width: 1; fill: none; }
+.chart .ln { stroke: var(--cream); stroke-width: 1.8; fill: none; stroke-linejoin: round; }
+.chart .ln2 { stroke: var(--sage); stroke-width: 2; fill: none; stroke-linejoin: round; }
+.chart .mark { stroke: var(--cream); stroke-width: 1.2; stroke-dasharray: 4 3; fill: none; }
+.chart .ghost { fill: none; stroke: var(--cream); stroke-width: 1.2; stroke-dasharray: 4 3; }
+.chart .sagetxt { fill: var(--sage); }
+
+.phases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 24px; border-top: 2px solid var(--ink); }
+.phases li { padding-top: 14px; display: grid; gap: 5px; align-content: start; }
+.phases .when { font-size: 0.86rem; }
+.phases .h { color: var(--ink); font-size: 1.15rem; line-height: 1.2; }
+.phases .d { font-size: 0.92rem; }
+.phases li.cur { border-top: 5px solid var(--sage); margin-top: -3.5px; }
+.phases li.cur .when { color: var(--sage); }
+
+.lineup { display: grid; gap: 0; }
+.lineup.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.lineup.six { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.lineup div { display: grid; justify-items: center; align-content: end; gap: 8px; padding: 10px 6px; }
+.lineup img { max-height: 190px; width: auto; max-width: 100%; }
+.lineup span { font-size: 0.82rem; text-align: center; line-height: 1.3; }
+.lineup span b { color: var(--ink); font-weight: 400; }
+.strip { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); padding-block: 12px; }
+
+.renders { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: end; gap: 24px; }
+.renders img { display: block; width: 100%; height: auto; }
+
+/* ---------- Masthead ---------- */
+.masthead { padding-block: 72px 0; }
+.masthead .top { align-items: end; }
+.lede { font-size: 1.2rem; line-height: 1.45; max-width: 44ch; }
+.contact { margin-top: 18px; line-height: 1.75; font-size: 0.98rem; }
+.contact .v { color: var(--ink); user-select: all; }
+button.copy { font: inherit; font-size: 0.78rem; color: var(--sage); background: none; border: 1px solid var(--sage); padding: 0 8px; margin-left: 8px; cursor: pointer; }
+.ramp { display: inline-flex; align-items: center; gap: 8px; }
+.ramp i { width: 140px; height: 7px; background: linear-gradient(90deg,#0000ff,#00a0ff,#00e0c0,#40f070,#c0f030,#f0c040,#f08020,#c00000); }
+.cover-cap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 0.88rem; margin-top: -30px; }
+
+.contents { margin-top: 64px; }
+.contents h2 { font-size: 1.6rem; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+.contents h2.sub { margin-top: 34px; }
+.contents ol { list-style: none; margin: 0; padding: 0; }
+.contents a { display: grid; grid-template-columns: 2rem minmax(0, 1.1fr) minmax(0, 1.6fr) 5.5rem; gap: 18px; padding-block: 13px; border-bottom: 1px solid var(--line); text-decoration: none; align-items: baseline; }
+.contents .no { color: var(--sage); }
+.contents .t { color: var(--ink); font-size: 1.25rem; }
+.contents a:hover .t { color: var(--sage); }
+.contents .yr { text-align: right; font-size: 0.9rem; }
+.contents .now { color: var(--sage); }
+
+.divider { padding-block: 84px 0; border-top: 5px solid var(--sage); margin-top: 40px; }
+.divider p { margin-top: 20px; font-size: 1.15rem; max-width: 52ch; }
+
+footer { margin-top: 40px; border-top: 2px solid var(--ink); padding-block: 16px 56px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 0.9rem; }
+
+@media (max-width: 900px) {
+  .wrap { padding-inline: 0; }
+  .poster::before, .poster::after { display: none; }
+  .poster { padding-block: 56px 48px; }
+  .top, .mid, .two, dl.issues { grid-template-columns: minmax(0, 1fr); }
+  .contents a { grid-template-columns: 1.6rem minmax(0, 1fr); }
+  .contents .r, .contents .yr { grid-column: 2; text-align: left; }
+  .phases { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; border-top: 0; }
+  .phases li { border-top: 2px solid var(--ink); }
+  .phases li.cur { margin-top: 0; }
+  .lineup.five, .lineup.six { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cover-cap { margin-top: -26px; }
+}
+@media (max-width: 480px) {
+  .lineup img { max-height: 130px; }
+  .renders { grid-template-columns: minmax(0, 1fr); }
+  .block > h3 { font-size: 1.7rem; }
+}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="top">
+    <h1 class="title"><span>Matthew</span><span class="l2">Humphrey</span></h1>
+    <div>
+      <p class="lede"><strong>Aerospace engineering at Georgia Tech, class of 2030.</strong> I do CFD for the Ramblin' Rocket Club's GNC team and build test hardware. Looking for a <span class="k">Summer 2027 internship</span> in aerodynamics, propulsion or simulation.</p>
+      <div class="contact">
+        <div><span class="v" id="email">mhumphrey34@gatech.edu</span><button class="copy" id="copy-email" type="button">Copy</button></div>
+        <div><span class="v">(252) 772-5435</span> · <a href="https://www.linkedin.com/in/matthew-humphrey-b78356371" target="_blank" rel="noopener">linkedin.com/in/matthew-humphrey-b78356371</a></div>
+        <div><span class="v">U.S. Citizen</span> · Atlanta, GA</div>
+      </div>
+    </div>
+  </div>
+  <figure class="plate">
+    <img class="onwhite" src="img/contour-base.jpg" width="960" height="360" alt="Velocity contour around the aft body, fin and base wake of the club rocket at Mach 0.5">
+  </figure>
+  <div class="cover-cap"><span>Velocity around the fin and base of the club rocket at Mach 0.5, from my 7.6M-cell Fluent solution (project 1).</span><span class="ramp">0<i aria-hidden="true"></i>242 m/s</span></div>
+
+  <nav class="contents" aria-label="Projects">
+    <h2>Projects</h2>
+    <ol>
+      <li><a href="#cfd"><span class="no">1</span><span class="t">Rocket CFD at Mach 0.5</span><span class="r">Drag coefficient 0.518, body friction within 0.3% of hand calculation</span><span class="yr">2026</span></a></li>
+      <li><a href="#wind"><span class="no">2</span><span class="t">Wind turbine blades</span><span class="r">77 blade and rotor designs; at-large invitation to State</span><span class="yr">2024–25</span></a></li>
+      <li><a href="#rocket"><span class="no">3</span><span class="t">Mass-tuned apogee rocket</span><span class="r">Flew 95 ft against a 125 ft ceiling, velocity within 3% of simulation</span><span class="yr">2026</span></a></li>
+    </ol>
+    <h2 class="sub">Current project sessions</h2>
+    <ol>
+      <li><a href="#dynmesh"><span class="no">4</span><span class="t">Fin tab dynamic mesh</span><span class="r">Can the club trust a moving mesh for fin tab loads? I lead the study</span><span class="yr now">Now</span></a></li>
+      <li><a href="#cardea"><span class="no">5</span><span class="t">CARDEA door-force logger</span><span class="r">Logger CAD and a building airflow model that changed how we read force</span><span class="yr now">Now</span></a></li>
+    </ol>
+  </nav>
+</header>
+
+<!-- ======================= 1 ======================= -->
+<section class="poster" id="cfd">
+  <div class="top">
+    <h2 class="title"><span>Rocket</span><span class="l2">CFD <small>At Mach<br>0.5</small></span></h2>
+    <div class="setup">
+      <h3>Set up</h3>
+      <p class="sub">Aerodynamics</p>
+      <ul>
+        <li><strong>Sized the boundary layer by hand</strong> from a flat-plate estimate at Re = 3.06 × 10<sup>7</sup>: a <span class="k">5.19 µm first cell</span> for y+ ≈ 1 and a 25-layer inflation stack about 31 mm thick.</li>
+        <li><strong>Set local face sizing</strong> of 10.15 mm on major surfaces and 0.32 mm on the 6.35 mm fin edges, with a wake refinement box that extends further downstream than upstream.</li>
+        <li><strong>Ran a steady, pressure-based coupled solver</strong> with energy, compressibility and curvature corrections, and set reference values so the half model reports full-vehicle coefficients.</li>
+        <li><strong>Moved the moment center to the measured CG</strong>, 89 in forward of the aft end, so GNC gets pitch moment about the point it needs.</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure class="plate">
+    <img class="onwhite" src="img/contour-base.jpg" width="960" height="360" alt="Velocity contour around the aft body, a fin and the base wake on the plane through the rocket axis">
+  </figure>
+
+  <div class="mid">
+    <div>
+      <p class="org">Ramblin' Rocket Club, GNC, Project 1:</p>
+      <p class="disc">Aerodynamics</p>
+      <p class="meta">Aug – Oct 2026 · individual project<br>Ansys Fluent 2025 R2, Ansys Discovery, SOLIDWORKS</p>
+      <table class="spec">
+        <tr><td>Mesh</td><td>7,600,607 cells</td></tr>
+        <tr><td>Max skewness</td><td>0.554</td></tr>
+        <tr><td>Min orthogonal quality</td><td>0.150</td></tr>
+        <tr><td>First layer</td><td>5.19 µm, y+ ≈ 1</td></tr>
+        <tr><td>Solver</td><td>RANS, k-ω SST</td></tr>
+        <tr><td>Run</td><td>2,000 iter., 24 cores</td></tr>
+        <tr class="key"><td>Drag coefficient</td><td>0.518</td></tr>
+        <tr class="key"><td>Friction vs hand calc</td><td>within 0.3%</td></tr>
+      </table>
+      <p class="summary">I meshed and solved the club's 2.63 m rocket at Mach 0.5 and 0° angle of attack, then checked every drag component against hand calculations. Body skin friction matched flat-plate theory <span class="k">within 0.3%</span>, and the drag breakdown showed that <strong>two-thirds of the drag</strong> comes from the blunt base and square fin edges.</p>
+    </div>
+    <figure>
+      <div class="legend"><span><i style="background:var(--indigo)"></i>Pressure drag</span><span><i style="background:var(--sage)"></i>Friction drag</span></div>
+      <svg class="chart" viewBox="0 0 460 250" role="img" aria-label="Drag by surface on the half model, split into pressure and friction: fin edges 30.1 N, base 28.7 N, body 19.5 N, nose 5.5 N, fin faces 4.8 N, other 0.4 N">
+        <g transform="translate(86,8)">
+          <line class="grid" x1="100" y1="0" x2="100" y2="206"/><line class="grid" x1="200" y1="0" x2="200" y2="206"/><line class="grid" x1="300" y1="0" x2="300" y2="206"/>
+          <line class="ax" x1="0" y1="0" x2="0" y2="206"/>
+          <text class="lab" x="-10" y="21" text-anchor="end">Fin edges</text><rect class="indf" x="0" y="8" width="299" height="20"/><rect class="sagef" x="299" y="8" width="2" height="20"/><text class="val" x="308" y="22">30.1 N</text>
+          <text class="lab" x="-10" y="55" text-anchor="end">Base</text><rect class="indf" x="0" y="42" width="287" height="20"/><text class="val" x="294" y="56">28.7 N</text>
+          <text class="lab" x="-10" y="89" text-anchor="end">Body</text><rect class="sagef" x="0" y="76" width="195" height="20"/><text class="val" x="202" y="90">19.5 N</text>
+          <text class="lab" x="-10" y="123" text-anchor="end">Nose</text><rect class="sagef" x="0" y="110" width="55" height="20"/><text class="val" x="62" y="124">5.5 N</text>
+          <text class="lab" x="-10" y="157" text-anchor="end">Fin faces</text><rect class="indf" x="0" y="144" width="11" height="20"/><rect class="sagef" x="11" y="144" width="36" height="20"/><text class="val" x="54" y="158">4.8 N</text>
+          <text class="lab" x="-10" y="191" text-anchor="end">Other</text><rect class="indf" x="0" y="178" width="2" height="20"/><rect class="sagef" x="2" y="178" width="2" height="20"/><text class="val" x="11" y="192">0.4 N</text>
+          <text x="0" y="226" text-anchor="middle">0</text><text x="100" y="226" text-anchor="middle">10</text><text x="200" y="226" text-anchor="middle">20</text><text x="300" y="226" text-anchor="middle">30 N</text>
+        </g>
+      </svg>
+      <figcaption><b>Fig. 1.1</b> Drag by surface, half model, 88.9 N total. The square 6.35 mm fin edges and the flat base carry <strong>66%</strong>, almost all of it pressure drag.</figcaption>
+    </figure>
+  </div>
+
+  <div class="block">
+    <h3>Checked against hand calculations</h3>
+    <div class="tablewrap">
+      <table class="data">
+        <thead><tr><th>Component, half model</th><th class="n">Hand estimate</th><th class="n">CFD</th><th class="n">Ratio</th><th>Method</th></tr></thead>
+        <tbody>
+          <tr class="key"><td>Body skin friction</td><td class="n">19.46 N</td><td class="n">19.52 N</td><td class="n">1.00</td><td>Flat plate, C<sub>f</sub> = 0.00219</td></tr>
+          <tr><td>Total skin friction</td><td class="n">25.4 N</td><td class="n">29.07 N</td><td class="n">1.14</td><td>Flat plate over 1.31 m² wetted area</td></tr>
+          <tr><td>Fin-edge pressure drag</td><td class="n">31.0–32.9 N</td><td class="n">29.91 N</td><td class="n">0.91–0.97</td><td>Stagnation on blunt leading edges</td></tr>
+          <tr><td>Base drag</td><td class="n">13.0 N</td><td class="n">28.65 N</td><td class="n">2.2</td><td>Hoerner base-drag correlation</td></tr>
+          <tr><td>Total</td><td class="n">71.4 N</td><td class="n">88.87 N</td><td class="n">1.25</td><td>C<sub>D</sub> 0.42 by hand, 0.518 from CFD</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Problems I solved</h3>
+    <dl class="issues">
+      <div><dt>The leaner mesh failed quality.</dt><dd>Following review, I rebuilt the mesh with a 25.4 mm surface minimum and a thicker first layer. It dropped to 6.2M cells, but minimum orthogonal quality fell to <strong>0.055</strong> at the aft fin corners and nose tip. I kept the 7.6M-cell mesh, which passed at <span class="k">0.15000105</span>, and the reviewer approved it.</dd></div>
+      <div><dt>VLab ran out of memory.</dt><dd>With 7.6M cells loaded, VLab had about 5–6 GB left. I <strong>moved the solve to Georgia Tech's PACE cluster</strong>, read the 2026 R1 case into Fluent 2025 R2 and re-verified every setting.</dd></div>
+      <div><dt>The roll moment looked like it vanished.</dt><dd>The report switched from a moment to a coefficient when I set reference values at iteration 157. 7.81 at Fluent's defaults and 0.0106 at mine are <strong>the same 4.78 N·m</strong>.</dd></div>
+      <div><dt>Normal force at zero angle of attack.</dt><dd>The fins carried 37.9 N with no incidence. I traced it to the deflected fin tab. The loads indicate the symmetry plane mirrors it, so <strong>the half model is solving a two-tab rocket</strong>. That finding set up project 4.</dd></div>
+    </dl>
+  </div>
+
+  <div class="block two">
+    <figure>
+      <div class="plate small"><img src="img/residuals.jpg" width="1440" height="880" alt="Scaled residuals over 2,000 iterations, falling four to six orders of magnitude and flat after about iteration 200"></div>
+    </figure>
+    <div class="col">
+      <h3>Convergence</h3>
+      <div class="prose">
+        <p><b class="k">Fig. 1.2</b> Residuals fall 4 to 6 orders and flatten by iteration 200.</p>
+        <p>I judged convergence on the forces instead: <strong>drag varies ±0.013%</strong> over the last 500 iterations, and mass flow balances to <strong>3.6 × 10<sup>−11</sup></strong> of inflow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 2 ======================= -->
+<section class="poster" id="wind">
+  <div class="top">
+    <h2 class="title"><span>Turbine</span><span class="l2">Blades <small>Wind<br>power</small></span></h2>
+    <div class="setup">
+      <h3>Set up</h3>
+      <p class="sub">Blade design</p>
+      <ul>
+        <li><strong>Designed blades with blade element momentum theory</strong> in QBlade, across four low-Reynolds-number airfoils: SG6043, S1223, GOE 79 and A10.</li>
+        <li><strong>Swept the design tip-speed ratio</strong> from <span class="k">1.9 to 6.2</span>, with two- and three-blade rotors.</li>
+        <li><strong>Printed and tested every candidate</strong> over a full season, inside the event's limits: the rotor mounts on a CD hub, can't extend more than 14 cm from the centre and can't reach behind the CD.</li>
+        <li>A lighter rotor spins up faster and makes more power, so <strong>every gram of print counts</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure style="margin-top:44px">
+    <div class="lineup six strip">
+      <div><img src="img/sweep-2-2.5.png" alt="Blade designed for tip-speed ratio 2.5"><span><b>TSR 2.5</b></span></div>
+      <div><img src="img/sweep-2-2.6.png" alt="Blade designed for tip-speed ratio 2.6"><span><b>2.6</b></span></div>
+      <div><img src="img/sweep-2-2.7.png" alt="Blade designed for tip-speed ratio 2.7"><span><b>2.7</b></span></div>
+      <div><img src="img/sweep-2-2.8.png" alt="Blade designed for tip-speed ratio 2.8"><span><b>2.8</b></span></div>
+      <div><img src="img/sweep-2-2.9.png" alt="Blade designed for tip-speed ratio 2.9"><span><b>2.9</b></span></div>
+      <div><img src="img/sweep-2-3.0.png" alt="Blade designed for tip-speed ratio 3.0"><span><b>3.0</b></span></div>
+    </div>
+    <figcaption><b>Fig. 2.1</b> The two-blade tip-speed-ratio sweep I ran for the State tournament, drawn to the same scale. <strong>The chord narrows as design TSR rises</strong>, as BEM predicts for a faster-spinning rotor.</figcaption>
+  </figure>
+
+  <div class="mid" style="margin-top:56px">
+    <div>
+      <p class="org">Science Olympiad, Project 2:</p>
+      <p class="disc">Wind Power</p>
+      <p class="meta">Aug 2024 – May 2025 · team lead, 2-person team<br>QBlade, Onshape, 3D printing</p>
+      <table class="spec">
+        <tr><td>Blade and rotor CAD files</td><td>77</td></tr>
+        <tr><td>QBlade projects</td><td>9</td></tr>
+        <tr><td>Airfoils compared</td><td>4</td></tr>
+        <tr><td>Design TSR range</td><td>1.9 – 6.2</td></tr>
+        <tr><td>Max rotor radius</td><td>14 cm</td></tr>
+        <tr class="key"><td>Result</td><td>at-large State invite</td></tr>
+      </table>
+      <p class="summary">I designed small turbine blades in QBlade, printed them and tested them over a full season. Our team earned an <span class="k">at-large invitation to the State tournament</span>.</p>
+    </div>
+    <figure>
+      <div class="lineup five">
+        <div><img src="img/blade-sg6043.png" alt="Blade with SG6043 airfoil"><span><b>SG6043</b><br>TSR 2.5, Regionals</span></div>
+        <div><img src="img/blade-goe79.png" alt="Blade with GOE 79 airfoil"><span><b>GOE 79</b><br>TSR 2.6</span></div>
+        <div><img src="img/blade-s1223.png" alt="Blade with S1223 airfoil"><span><b>S1223</b><br>TSR 2.7</span></div>
+        <div><img src="img/blade-a10.png" alt="Blade with A10 airfoil"><span><b>A10</b><br>TSR 2.8</span></div>
+        <div><img src="img/blade-tsr62.png" alt="Blade with 9 cm radius designed for tip-speed ratio 6.2"><span><b>9 cm blade</b><br>TSR 6.2</span></div>
+      </div>
+      <figcaption><b>Fig. 2.2</b> Airfoil comparison for the final testing round, each drawn at its own scale.</figcaption>
+    </figure>
+  </div>
+
+  <div class="block">
+    <h3>Beyond the event</h3>
+    <div class="prose"><p>I turned the season into a <strong>Wind Power workshop that I taught</strong> at the aerospace summer camp I co-founded, and wrote a <strong>50-page study guide</strong> with my teammate covering blade aerodynamics, generators, storage and transmission.</p></div>
+  </div>
+</section>
+
+<!-- ======================= 3 ======================= -->
+<section class="poster" id="rocket">
+  <div class="top">
+    <h2 class="title"><span>Apogee</span><span class="l2">Rocket <small>Mass<br>tuned</small></span></h2>
+    <div class="setup">
+      <h3>Set up</h3>
+      <p class="sub">Design</p>
+      <ul>
+        <li>The A8-3 motor overshot 125 ft in early simulations. Since the target is a ceiling, <strong>we added mass at the nose</strong>: the same impulse on a heavier rocket gives a lower burnout speed.</li>
+        <li><strong>I modeled a 70 mm ogive nose cone and a 132 mm printed payload bay</strong> with a transition, sized in OpenRocket for mass and stability together.</li>
+        <li>The heavy nose let us switch from large swept fins to <strong>138 mm long-root, short-span basswood fins</strong> with less mass and drag.</li>
+        <li>Flight 1 left the rail at about 30° because the only launch lug sat high on the payload bay. <strong>A second lug on a fin fixed it</strong>; flight 2 went straight up.</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure class="plate">
+    <img src="img/openrocket.jpg" width="1810" height="411" alt="OpenRocket profile of the modified rocket, CG at 188 mm and CP at 236 mm from the nose tip">
+  </figure>
+  <p class="cap" style="margin-top:-30px"><b>Fig. 3.1</b> Final OpenRocket model, 399 mm long. CG at 188 mm and CP at 236 mm from the nose tip.</p>
+
+  <div class="mid" style="margin-top:48px">
+    <div>
+      <p class="org">AE 1600, Georgia Tech, Project 3:</p>
+      <p class="disc">Rocket design</p>
+      <p class="meta">Fall 2026 · 4-person team<br>My part: OpenRocket simulation, CAD of the nose cone, payload bay and fins</p>
+      <table class="spec">
+        <tr><td>Target</td><td>125 ft ceiling</td></tr>
+        <tr><td>Predicted apogee</td><td>107 ft</td></tr>
+        <tr class="key"><td>Flown apogee</td><td>95 ft</td></tr>
+        <tr class="key"><td>Peak velocity vs sim</td><td>within 3%</td></tr>
+        <tr><td>Stability margin</td><td>1.61 cal</td></tr>
+        <tr><td>Dry mass</td><td>63.3 g</td></tr>
+        <tr><td>Flights</td><td>3</td></tr>
+      </table>
+      <p class="summary">We modified an Estes Wizard to carry an altimeter and fly as close to 125 ft as possible without going over. It flew <span class="k">95 ft</span> against a 107 ft prediction, and the measured peak velocity matched the simulation <strong>within 3%</strong>, which put the shortfall in drag and wind during coast.</p>
+    </div>
+    <figure>
+      <div class="plate small"><img src="img/flight3.jpg" width="1200" height="1023" alt="Altitude and velocity against time for flight 3, apogee 95 ft"></div>
+      <figcaption><b>Fig. 3.2</b> Flight 3 altimeter data. The ejection charge pushed out the unretained motor, so next time we'd add <strong>an engine hook, a parachute for 3–5 m/s</strong>, and aim for about 140 ft in simulation to land near 125.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="divider">
+  <h2 class="title"><span>Current</span><span class="l2">Sessions <small>Work in<br>progress</small></span></h2>
+  <p>Projects I'm running now. Each one is shown at the stage it has reached; <strong>results appear here only after they pass their checks</strong>.</p>
+</section>
+
+<!-- ======================= 4 ======================= -->
+<section class="poster" id="dynmesh">
+  <div class="top">
+    <h2 class="title"><span>Dynamic</span><span class="l2">Mesh <small>Fin<br>tab</small></span></h2>
+    <div class="setup">
+      <h3>Set up</h3>
+      <p class="sub">Decisions so far</p>
+      <ul>
+        <li><strong>Mesh motion:</strong> radial basis function smoothing with local smoothing. Remeshing stays off, because Fluent's unified remeshing only works on tetrahedral cells and this mesh is polyhedral. Diffusion smoothing is the fallback.</li>
+        <li><strong>Tab drive:</strong> a compiled C UDF rotates the tab about the hinge. A cosine ramp drives the transient runs, with a second build for the 2 ms ramp, and a +1° step positions the tab for the steady runs.</li>
+        <li><strong>Positive deflection only:</strong> I cut the −15° case. At 0° the hinge moment and normal force should read near zero, and at +15° their signs check the convention.</li>
+        <li><strong>One mesh for both:</strong> steady and moving runs share the mesh and physics, so any difference between them comes from the moving mesh.</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure style="margin-top:48px">
+    <div class="strip">
+    <svg class="chart" viewBox="0 0 720 330" role="img" aria-label="Fin root section drawn to scale, 8 inches of chord and 0.375 inches thick, with the tab hinged at z equals minus 2 inches and deflecting to plus 15 degrees, plus a four-times hinge detail showing the semicircular tab nose of radius 0.1875 inches sealed in a cove in the fin">
+      <g transform="translate(36,74)">
+        <path class="indf" d="M0 0 H300 A9.375 9.375 0 0 0 300 18.75 H0 Z"/>
+        <path class="sagef" d="M300 0 H400 V18.75 H300 A9.375 9.375 0 0 1 300 0 Z"/>
+        <g transform="rotate(-15 300 9.375)"><path class="ghost" d="M300 0 H400 V18.75 H300 A9.375 9.375 0 0 1 300 0 Z"/></g>
+        <circle cx="300" cy="9.375" r="3" fill="var(--bg)" stroke="var(--ink)" stroke-width="1.3"/>
+        <line class="ax" x1="300" y1="-48" x2="300" y2="2"/>
+        <text class="lab" x="300" y="-54" text-anchor="middle">hinge axis, z = −2 in</text>
+        <text class="lab" x="150" y="-10" text-anchor="middle">fin, stationary</text>
+        <text class="lab" x="350" y="40" text-anchor="middle">tab, rigid body</text>
+        <path class="ax" d="M408 6 A110 110 0 0 0 404 -22"/>
+        <text class="sagetxt" x="416" y="-14">0° to +15°</text>
+        <line class="ax" x1="0" y1="62" x2="400" y2="62"/>
+        <line class="ax" x1="0" y1="56" x2="0" y2="68"/><line class="ax" x1="300" y1="56" x2="300" y2="68"/><line class="ax" x1="400" y1="56" x2="400" y2="68"/>
+        <text x="0" y="84">z = −8 in (root LE)</text><text x="300" y="84" text-anchor="middle">−2</text><text x="400" y="84" text-anchor="middle">0 (TE)</text>
+        <g transform="translate(560,6)">
+          <line class="ax" x1="0" y1="40" x2="0" y2="0"/><path class="creamf" d="M0 -6 L-4 2 H4 Z"/><text x="8" y="6">+y</text>
+          <line class="ax" x1="0" y1="40" x2="70" y2="40"/><path class="creamf" d="M76 40 L68 36 V44 Z"/><text x="40" y="56" text-anchor="middle">+z, flow</text>
+        </g>
+      </g>
+      <g transform="translate(36,186)">
+        <rect x="0" y="0" width="14" height="10" class="indf"/><text class="lab" x="22" y="9">fin, stationary</text>
+        <rect x="0" y="22" width="14" height="10" class="sagef"/><text class="lab" x="22" y="31">tab body and trailing edge, rigid</text>
+        <line x1="0" y1="49" x2="14" y2="49" stroke="var(--cream)" stroke-width="3"/><text class="lab" x="22" y="53">deforming: exposed nose arcs, nose</text><text class="lab" x="22" y="68">half-disc at the tip, root wall</text>
+        <rect x="0" y="80" width="14" height="10" class="ghost"/><text class="lab" x="22" y="89">tab at +15°</text>
+        <text x="0" y="118">Root section to scale (0.375 in thick)</text>
+      </g>
+      <g transform="translate(470,170)">
+        <text class="lab" x="0" y="-8">Hinge detail, 4×</text>
+        <g transform="translate(100,10)">
+          <path class="indf" d="M-100 0 H-14 L-12.83 2.26 A37.5 37.5 0 0 0 -12.83 72.74 L-14 75 H-100 Z"/>
+          <path class="sagef" d="M0 0 H110 V75 H0 A37.5 37.5 0 0 1 0 0 Z"/>
+          <path d="M0 75 A37.5 37.5 0 0 1 -12.83 72.74" fill="none" stroke="var(--cream)" stroke-width="3.5"/>
+          <path d="M-12.83 2.26 A37.5 37.5 0 0 1 0 0" fill="none" stroke="var(--cream)" stroke-width="3.5"/>
+          <circle cx="0" cy="37.5" r="2.6" fill="var(--bg)" stroke="var(--bg)" stroke-width="1.2"/>
+          <line x1="0" y1="37.5" x2="26.5" y2="11" stroke="var(--bg)" stroke-width="1.2"/>
+          <text x="30" y="14" style="fill:var(--bg)">R 0.1875 in</text>
+        </g>
+        <text x="0" y="110">fin cove 110°–250°, 0.011 in bevel;</text>
+        <text x="0" y="125">20° of nose exposed each side</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption><b>Fig. 4.1</b> Fin root section with the Stage 1 hinge, drawn to scale. The tab runs the full 5.65 in span and its semicircular nose sits sealed in a cove in the fin. <strong>Only the thin strips of nose left exposed, the nose's half-disc on the tip plane and the root wall deform</strong>, and each is held to its cylinder or plane so mesh nodes slide along it instead of distorting.</figcaption>
+  </figure>
+
+  <div class="mid" style="margin-top:56px">
+    <div>
+      <p class="org">Ramblin' Rocket Club, GNC, Project 4:</p>
+      <p class="disc">Aerodynamics · work in progress</p>
+      <p class="meta">Oct 2026 – present · study lead<br>Ansys Fluent 2026 R1 with Watertight Geometry meshing, Ansys Discovery, C user-defined functions</p>
+      <table class="spec">
+        <tr><td>Model</td><td>one fin, 0.375 in plate</td></tr>
+        <tr><td>Tab</td><td>2.0 in chord, full span</td></tr>
+        <tr><td>Deflection</td><td>0° to +15°</td></tr>
+        <tr><td>Flow</td><td>Mach 0.5, sea level</td></tr>
+        <tr><td>Mesh budget</td><td>&lt; 1M polyhedra, y+ ≈ 3</td></tr>
+        <tr><td>Mesh motion</td><td>RBF + local smoothing</td></tr>
+        <tr><td>Runs</td><td>1 preview, 4 steady, 3 transient</td></tr>
+        <tr><td>Plan</td><td>49 steps</td></tr>
+        <tr class="key"><td>Pass test (proposed)</td><td>within 2% of steady</td></tr>
+      </table>
+    </div>
+    <div>
+      <p class="summary" style="margin-top:0;font-size:1.15rem">The rocket steers with a hinged tab on one fin. Before GNC relies on loads from a moving tab, the club needs to know whether a Fluent dynamic mesh gets them right. <strong>I'm leading the club's first moving-mesh study</strong>: every moving-tab result is checked against steady runs on <span class="k">the same mesh with the same physics</span>, and the deliverable is a recommendation on when a moving mesh is worth its cost.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Plan</h3>
+    <ol class="phases">
+      <li class="cur"><span class="when">Stage 1 · current</span><span class="h">Geometry and mesh</span><span class="d">Cut the sealed hinge in Discovery, then a polyhedral mesh under 1M cells with 10 prism layers. Now importing the STEP file and checking axes. Steps 1–19.</span></li>
+      <li><span class="when">Stage 2</span><span class="h">Setup and motion preview</span><span class="d">Physics, compiled motion UDF and mesh zones; preview the tab to +15° with orthogonal quality ≥ 0.15 at every step. Steps 20–40.</span></li>
+      <li><span class="when">Stage 3</span><span class="h">Steady references</span><span class="d">S0, S5, S10, S15, with the tab stepped 1° per mesh update. Steps 41–45.</span></li>
+      <li><span class="when">Stage 4</span><span class="h">Moving tab and verdict</span><span class="d">Three transient runs compared with the steady points, cost per run, and a recommendation. Steps 46–49.</span></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h3>Run matrix</h3>
+    <div class="tablewrap">
+      <table class="data">
+        <thead><tr><th>Run</th><th>Tab motion</th><th class="n">Time step</th><th class="n">Steps</th><th>Check</th></tr></thead>
+        <tbody>
+          <tr><td>P0 preview</td><td>0° to +15°, mesh only</td><td class="n">5 × 10<sup>−5</sup> s</td><td class="n">440</td><td>Orthogonal quality ≥ 0.15, no negative volumes</td></tr>
+          <tr><td>S0</td><td>0°</td><td class="n">steady</td><td class="n">–</td><td>Hinge moment and normal force near zero</td></tr>
+          <tr><td>S5, S10</td><td>+1° per mesh update</td><td class="n">steady</td><td class="n">–</td><td>Reference points</td></tr>
+          <tr><td>S15</td><td>+15°</td><td class="n">steady</td><td class="n">–</td><td>Sign check on moment and force</td></tr>
+          <tr class="key"><td>D1</td><td>hold 2 ms, 20 ms ramp, hold 15 ms</td><td class="n">5 × 10<sup>−5</sup> s</td><td class="n">740</td><td>Final hold within 2% of S15</td></tr>
+          <tr><td>D2</td><td>same as D1</td><td class="n">2.5 × 10<sup>−5</sup> s</td><td class="n">1,480</td><td>Peak hinge moment within 1% of D1</td></tr>
+          <tr><td>D3</td><td>hold 2 ms, 2 ms ramp, hold 5 ms</td><td class="n">5 × 10<sup>−6</sup> s</td><td class="n">1,800</td><td>Method demonstration, no pass value</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Tolerances are proposed and still pending team sign-off. Transient runs start from the converged 0° solution and use second-order implicit time stepping.</p>
+  </div>
+
+  <div class="block">
+    <h3>How I'm running it</h3>
+    <dl class="issues">
+      <div><dt>Every setting has a source.</dt><dd>Each one goes into a tracker as measured, calculated, from the Ansys documentation, or unverified. <strong>Nothing counts as done until I have a screenshot or a number from the software</strong>, and every axis and moment centre is checked against the mesh before it's entered.</dd></div>
+      <div><dt>I audited the plan before building.</dt><dd>I checked the 23 assumptions in the original plan against the Fluent 2026 R1 documentation: <span class="k">9 held, 12 needed a correction</span> and 2 wait on a test in the software.</dd></div>
+      <div><dt>Two corrections changed the method.</dt><dd>RBF smoothing can't be combined with boundary-layer smoothing, which <strong>reordered the fallbacks</strong>, and the UDF ramp time is fixed at compile time, so <strong>the fast run needs its own build</strong>.</dd></div>
+      <div><dt>Still open.</dt><dd>Sign-off on the hinge geometry and pass tolerances, the far-field boundary type and the wall roughness.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ======================= 5 ======================= -->
+<section class="poster" id="cardea">
+  <div class="top">
+    <h2 class="title"><span>Cardea</span><span class="l2">Logger <small>Door<br>force</small></span></h2>
+    <div class="setup">
+      <h3>Set up</h3>
+      <p class="sub">Hardware</p>
+      <ul>
+        <li>v1 used a 120 mm lever suction cup. <strong>I dropped it</strong>: the pull acts 45 mm off the cup's centre and can peel it, and the cup doesn't fit a narrow door stile.</li>
+        <li>v2, a mock-up now in review with Josh, is <strong>a push pad, which works on any door from either side</strong>. Only the sign of the pressure flips, and the analysis already handles that.</li>
+        <li><strong>Six M4 set screws set 0.15 mm off act as overload stops.</strong> My beam estimate puts the push path at about 4,000 N/mm, four times stiffer than the cell. Because the parts are printed PETG, a dial-gauge test at 15 kgf will check that before I rely on it.</li>
+        <li><strong>All geometry builds from one parameter file.</strong> The build fails if a part isn't watertight, two parts collide, or a clearance rule breaks.</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure style="margin-top:48px">
+    <div class="renders strip">
+      <img src="img/cardea-v2.png" width="663" height="786" alt="Logger v2 in push configuration: blue pad, grey load cell, orange grip and red stop caps, with the green electronics shell on the side wing">
+      <img src="img/cardea-hook.png" width="486" height="652" alt="Logger v2 with the purple hook adapter fitted under the pad for pull-only doors">
+    </div>
+    <figcaption><b>Fig. 5.1</b> Logger v2 mock-up, rendered from my CAD files and now in review with Josh. Left: push build. <strong>The load path runs hand, grip, load cell, pad, door</strong>, so the cell only sees compression. Right: hook adapter for doors that only pull. The green electronics shell is Josh's design.</figcaption>
+  </figure>
+
+  <div class="mid" style="margin-top:56px">
+    <div>
+      <p class="org">FAIR Tech Competition, Project 5:</p>
+      <p class="disc">Mechanical design and airflow modeling · work in progress</p>
+      <p class="meta">Nov 2026 – present · with Joshua Lamiy (electronics, firmware)<br>Mechanical design, CONTAM airflow modeling, analysis software</p>
+      <table class="spec">
+        <tr><td>Logger</td><td>v2 mock-up, in review</td></tr>
+        <tr><td>Load cell</td><td>20 kg S-type</td></tr>
+        <tr><td>Overload stops</td><td>6, set at 0.15 mm</td></tr>
+        <tr><td>Pressure to force</td><td>0.237 lbf/Pa</td></tr>
+        <tr><td>CONTAM cases</td><td>7</td></tr>
+        <tr class="key"><td>Check solver vs CONTAM</td><td>5 ppm</td></tr>
+        <tr><td>Issues logged</td><td>32, 19 resolved</td></tr>
+        <tr><td>Analysis tests</td><td>16 passing</td></tr>
+      </table>
+      <p class="summary">A handheld logger that records force, door angle and the pressure across a door through one swing, so a heavy door comes with a likely cause: the closer, the building's air pressure, friction or the latch. I designed the hardware and built the airflow model, which showed that <span class="k">door pressure is almost gone a quarter inch into the swing</span>.</p>
+    </div>
+    <figure>
+      <svg class="chart" viewBox="0 0 420 250" role="img" aria-label="Pressure across the door as it opens: 6.9 Pa closed, 0.97 Pa at a quarter inch, 0.37 Pa at half an inch, 0.12 Pa at one inch">
+        <g transform="translate(40,16)">
+          <line class="grid" x1="0" y1="0" x2="360" y2="0"/><line class="grid" x1="0" y1="45" x2="360" y2="45"/><line class="grid" x1="0" y1="90" x2="360" y2="90"/><line class="grid" x1="0" y1="135" x2="360" y2="135"/>
+          <line class="ax" x1="0" y1="180" x2="360" y2="180"/>
+          <text x="-8" y="184" text-anchor="end">0</text><text x="-8" y="139" text-anchor="end">2</text><text x="-8" y="94" text-anchor="end">4</text><text x="-8" y="49" text-anchor="end">6</text><text x="-8" y="4" text-anchor="end">8</text>
+          <rect class="indf" x="22" y="24.8" width="60" height="155.2"/><text class="val" x="52" y="18" text-anchor="middle">6.9 Pa</text>
+          <rect class="sagef" x="110" y="158.2" width="60" height="21.8"/><text class="sagetxt" x="140" y="151" text-anchor="middle">0.97 (14%)</text>
+          <rect class="indf" x="198" y="171.7" width="60" height="8.3"/><text class="val" x="228" y="164" text-anchor="middle">0.37 (5%)</text>
+          <rect class="indf" x="286" y="177.3" width="60" height="2.7"/><text class="val" x="316" y="170" text-anchor="middle">0.12 (2%)</text>
+          <text class="lab" x="52" y="200" text-anchor="middle">closed</text><text class="lab" x="140" y="200" text-anchor="middle">¼ in</text><text class="lab" x="228" y="200" text-anchor="middle">½ in</text><text class="lab" x="316" y="200" text-anchor="middle">1 in</text>
+          <text x="180" y="224" text-anchor="middle">latch-edge travel</text>
+        </g>
+      </svg>
+      <figcaption><b>Fig. 5.2</b> Pressure across the door as it opens, 50 scfm surplus. Opening adds gap area, and <strong>pressure falls with the square of that area</strong>.</figcaption>
+    </figure>
+  </div>
+
+  <div class="block two">
+    <div class="col">
+      <h3>Why doors are heavy</h3>
+      <div class="prose">
+        <p>Two things make a door heavy: <strong>a closer spring set too strong, and air pressure across the door</strong>. On a 3 ft by 7 ft door, each pascal adds about <span class="k">0.24 lbf at the handle</span>, from the published smoke-control door-force equation. The two interact, because a door that won't latch against pressure usually gets a stronger closer.</p>
+        <p>The 5 lbf accessibility limit for interior doors applies to the steady push out to 70° and leaves out the extra force from air pressure at the start, but that first push is what people feel. A standard door gauge gives one number, so Facilities can't tell which cause to fix. Measuring force and pressure together through the swing separates them: <strong>we report the steady force against the limit and the first-push force beside it, never against it</strong>.</p>
+      </div>
+    </div>
+    <div class="col">
+      <h3>Building airflow model in CONTAM</h3>
+      <div class="prose">
+        <p>I modeled a 1,620 ft³ room and an 810 ft³ corridor in NIST's CONTAM, with 150 scfm supply and 100 scfm return, so 50 scfm has to leave through an 18 in² door undercut. CONTAM gave <span class="k">6.905 Pa</span> across the door.</p>
+        <p>My hand calculation first disagreed by 0.2%. I found that ContamW converts at 248.84 Pa per inch of water, not 249.09. With that fixed, <strong>the two match to five significant figures</strong>.</p>
+        <p>From there I ran <strong>seven cases</strong>: wall leakage at two heights, indoor and outdoor temperatures of 20 °C and 0 °C, the door opened ¼ in and 1 in, and frame gaps added to the undercut. I also wrote an independent check solver in Python that reproduces CONTAM's saved results to <span class="k">five parts per million</span> and filled in two cases that were never saved.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block two">
+    <figure>
+      <div class="legend"><span><i style="background:var(--cream)"></i>Force</span><span><i style="background:var(--sage)"></i>Pressure</span></div>
+      <svg class="chart" viewBox="0 0 460 268" role="img" aria-label="Simulated push: force rises to a peak of about 27 newtons before the door moves; the pressure across the door collapses from 6.9 pascals to near zero within the first degree of swing">
+        <g transform="translate(44,10)">
+          <line class="grid" x1="0" y1="0" x2="400" y2="0"/><line class="grid" x1="0" y1="55" x2="400" y2="55"/>
+          <line class="ax" x1="0" y1="110" x2="400" y2="110"/>
+          <text x="-8" y="114" text-anchor="end">0</text><text x="-8" y="59" text-anchor="end">20</text><text x="-8" y="4" text-anchor="end">40</text>
+          <text x="4" y="14">force (N)</text>
+          <polyline class="ln" points="0.0,109.8 1.4,109.9 2.8,110.0 4.2,110.0 5.6,110.0 6.9,109.7 8.3,110.0 9.7,110.0 11.1,109.5 12.5,109.5 13.9,109.3 15.3,108.8 16.7,107.6 18.1,106.7 19.4,104.9 20.8,104.0 22.2,103.4 23.6,103.1 25.0,103.0 26.4,103.0 27.8,102.5 29.2,101.9 30.6,100.4 31.9,99.1 33.3,97.8 34.7,96.8 36.1,96.4 37.5,96.3 38.9,96.7 40.3,96.3 41.7,95.5 43.1,94.5 44.4,93.4 45.8,92.1 47.2,90.7 48.6,90.0 50.0,90.1 51.4,89.9 52.8,89.9 54.2,89.3 55.6,88.7 56.9,87.2 58.3,85.9 59.7,84.7 61.1,84.0 62.5,83.5 63.9,83.3 65.3,83.5 66.7,83.2 68.1,82.8 69.4,81.8 70.8,80.3 72.2,78.6 73.6,77.6 75.0,77.2 76.4,77.1 77.8,76.7 79.2,76.9 80.6,76.5 81.9,75.7 83.3,74.1 84.7,72.9 86.1,71.7 87.5,71.0 88.9,70.4 90.3,70.3 91.7,70.5 93.1,70.2 94.4,69.7 95.8,68.6 97.2,66.9 98.6,65.9 100.0,64.6 101.4,63.9 102.8,63.7 104.2,64.0 105.6,63.8 106.9,63.4 108.3,62.6 109.7,61.3 111.1,59.7 112.5,58.5 113.9,57.7 115.3,57.0 116.7,57.3 118.1,57.6 119.4,57.0 120.8,56.5 122.2,55.4 123.6,54.0 125.0,52.8 126.4,51.6 127.8,51.1 129.2,50.9 130.6,50.6 131.9,50.7 133.3,50.2 134.7,49.5 136.1,48.3 137.5,46.9 138.9,45.4 140.3,44.6 141.7,44.3 143.1,44.2 144.4,44.1 145.8,44.1 147.2,43.3 148.6,42.4 150.0,41.1 151.4,39.6 152.8,38.9 154.2,38.1 155.6,38.1 156.9,38.4 158.3,38.8 159.7,38.9 161.1,38.5 162.5,37.6 163.9,36.6 165.3,36.3 166.7,36.4 168.1,37.4 169.4,38.1 170.8,39.5 172.2,40.8 173.6,41.5 175.0,41.7 176.4,41.8 177.8,42.2 179.2,42.8 180.6,43.9 181.9,45.3 183.3,47.4 184.7,48.9 186.1,50.1 187.5,51.0 188.9,51.5 190.3,51.7 191.7,51.9 193.1,53.0 194.4,53.9 195.8,55.4 197.2,57.4 198.6,58.6 200.0,58.9 201.4,58.9 202.8,58.3 204.2,58.4 205.6,58.2 206.9,58.6 208.3,59.6 209.7,59.8 211.1,60.7 212.5,61.0 213.9,60.6 215.3,59.4 216.7,58.3 218.1,57.6 219.4,57.1 220.8,57.6 222.2,57.8 223.6,58.1 225.0,58.3 226.4,58.1 227.8,57.5 229.2,56.5 230.6,55.6 231.9,55.2 233.3,55.4 234.7,55.8 236.1,56.9 237.5,57.5 238.9,58.1 240.3,57.9 241.7,57.1 243.1,55.3 244.4,53.3 245.8,50.5 247.2,47.6 248.6,45.1 250.0,41.7 251.4,37.9 252.8,33.8 254.2,29.3 255.6,24.5 256.9,20.4 258.3,16.8 259.7,14.4 261.1,13.6 262.5,13.2 263.9,13.5 265.3,14.0 266.7,14.7 268.1,15.9 269.4,17.9 270.8,20.2 272.2,23.8 273.6,28.2 275.0,32.9 276.4,38.2 277.8,42.9 279.2,47.1 280.6,50.7 281.9,53.7 283.3,56.5 284.7,58.9 286.1,61.7 287.5,63.8 288.9,65.7 290.3,66.8 291.7,67.0 293.1,65.9 294.4,63.9 295.8,61.5 297.2,58.9 298.6,56.2 300.0,54.0 301.4,52.0 302.8,49.8 304.2,47.4 305.6,44.3 306.9,41.2 308.3,38.3 309.7,35.8 311.1,33.9 312.5,33.5 313.9,33.2 315.3,34.0 316.7,35.0 318.1,36.5 319.4,37.2 320.8,38.0 322.2,39.5 323.6,41.7 325.0,44.1 326.4,47.0 327.8,50.7 329.2,54.1 330.6,57.3 331.9,59.3 333.3,61.3 334.7,62.4 336.1,63.1 337.5,64.3 338.9,65.4 340.3,66.2 341.7,67.1 343.1,67.2 344.4,66.9 345.8,65.6 347.2,63.3 348.6,60.9 350.0,58.7 351.4,56.9 352.8,55.5 354.2,54.1 355.6,53.1 356.9,51.6 358.3,49.7 359.7,48.1 361.1,46.4 362.5,44.4 363.9,44.1 365.3,44.1 366.7,44.8 368.1,45.8 369.4,47.3 370.8,48.6 372.2,49.5 373.6,50.3 375.0,50.9 376.4,52.1 377.8,53.6 379.2,56.1 380.6,58.3 381.9,61.0 383.3,62.6 384.7,63.7 386.1,64.4 387.5,64.4 388.9,64.3 390.3,64.3 391.7,64.8 393.1,65.2 394.4,65.3 395.8,65.5 397.2,65.0 398.6,63.8 400.0,61.8"/>
+          <line class="mark" x1="187.5" y1="0" x2="187.5" y2="214"/>
+          <circle class="creamf" cx="165.3" cy="36.3" r="3.8"/>
+          <text class="val" x="157.3" y="28.3" text-anchor="end">break-open peak</text>
+          <g transform="translate(0,140)">
+            <line class="grid" x1="0" y1="0" x2="400" y2="0"/>
+            <line class="ax" x1="0" y1="70" x2="400" y2="70"/>
+            <text x="-8" y="74" text-anchor="end">0</text><text x="-8" y="4" text-anchor="end">7</text>
+            <text x="4" y="14">pressure (Pa)</text>
+            <polyline class="ln2" points="0.0,0.9 1.4,1.1 2.8,0.9 4.2,0.4 5.6,1.1 6.9,0.7 8.3,0.7 9.7,0.6 11.1,0.7 12.5,0.9 13.9,1.4 15.3,1.2 16.7,1.0 18.1,0.8 19.4,0.9 20.8,0.6 22.2,1.3 23.6,1.3 25.0,0.6 26.4,1.0 27.8,1.0 29.2,0.9 30.6,0.7 31.9,0.7 33.3,0.8 34.7,0.2 36.1,0.7 37.5,1.1 38.9,0.9 40.3,0.4 41.7,1.3 43.1,0.7 44.4,1.2 45.8,1.3 47.2,1.2 48.6,1.0 50.0,0.6 51.4,1.2 52.8,0.5 54.2,1.0 55.6,0.6 56.9,0.9 58.3,1.2 59.7,0.5 61.1,1.2 62.5,1.0 63.9,0.5 65.3,1.5 66.7,1.3 68.1,0.7 69.4,1.2 70.8,1.0 72.2,0.7 73.6,1.7 75.0,0.1 76.4,0.8 77.8,1.5 79.2,0.5 80.6,1.2 81.9,0.4 83.3,0.4 84.7,1.1 86.1,1.2 87.5,1.4 88.9,0.6 90.3,1.2 91.7,0.9 93.1,1.0 94.4,0.9 95.8,1.2 97.2,0.9 98.6,1.2 100.0,0.9 101.4,1.0 102.8,0.9 104.2,0.7 105.6,1.1 106.9,0.8 108.3,0.5 109.7,1.0 111.1,0.7 112.5,0.4 113.9,0.9 115.3,0.8 116.7,0.9 118.1,0.4 119.4,1.4 120.8,1.0 122.2,1.0 123.6,1.0 125.0,0.9 126.4,0.8 127.8,1.0 129.2,1.2 130.6,1.2 131.9,0.5 133.3,0.9 134.7,0.8 136.1,0.6 137.5,0.8 138.9,1.0 140.3,0.9 141.7,0.5 143.1,0.8 144.4,0.9 145.8,1.1 147.2,1.0 148.6,1.2 150.0,1.1 151.4,1.4 152.8,0.6 154.2,1.0 155.6,0.6 156.9,1.3 158.3,1.5 159.7,1.4 161.1,1.8 162.5,2.4 163.9,2.7 165.3,3.3 166.7,3.8 168.1,4.6 169.4,5.9 170.8,7.2 172.2,8.2 173.6,10.4 175.0,12.5 176.4,13.7 177.8,16.0 179.2,18.3 180.6,21.0 181.9,23.0 183.3,25.4 184.7,28.0 186.1,30.5 187.5,33.6 188.9,36.2 190.3,38.8 191.7,40.9 193.1,43.6 194.4,45.7 195.8,46.9 197.2,49.4 198.6,50.2 200.0,52.3 201.4,53.6 202.8,55.0 204.2,56.0 205.6,57.0 206.9,57.5 208.3,58.4 209.7,58.6 211.1,59.6 212.5,59.9 213.9,59.9 215.3,60.2 216.7,60.7 218.1,60.6 219.4,61.0 220.8,60.8 222.2,60.9 223.6,61.2 225.0,61.3 226.4,61.6 227.8,61.3 229.2,61.6 230.6,61.6 231.9,61.4 233.3,61.6 234.7,61.6 236.1,61.6 237.5,62.3 238.9,62.3 240.3,62.4 241.7,62.5 243.1,62.8 244.4,63.0 245.8,62.8 247.2,63.5 248.6,63.4 250.0,63.7 251.4,63.9 252.8,64.2 254.2,64.8 255.6,65.1 256.9,65.7 258.3,65.9 259.7,66.6 261.1,66.8 262.5,66.9 263.9,68.3 265.3,67.8 266.7,68.2 268.1,69.1 269.4,68.5 270.8,68.9 272.2,69.2 273.6,69.4 275.0,69.1 276.4,68.6 277.8,69.4 279.2,69.6 280.6,69.7 281.9,69.4 283.3,70.0 284.7,69.5 286.1,69.6 287.5,69.9 288.9,69.7 290.3,69.7 291.7,69.8 293.1,69.9 294.4,69.8 295.8,69.9 297.2,69.7 298.6,69.5 300.0,69.6 301.4,69.7 302.8,70.0 304.2,70.0 305.6,69.6 306.9,69.9 308.3,69.8 309.7,69.3 311.1,69.9 312.5,69.7 313.9,69.9 315.3,69.8 316.7,69.9 318.1,69.8 319.4,69.8 320.8,70.0 322.2,69.3 323.6,69.6 325.0,69.9 326.4,69.9 327.8,70.0 329.2,69.8 330.6,69.8 331.9,69.9 333.3,69.8 334.7,70.0 336.1,69.9 337.5,69.6 338.9,69.8 340.3,69.6 341.7,69.9 343.1,69.6 344.4,69.8 345.8,69.9 347.2,69.8 348.6,69.9 350.0,70.0 351.4,70.0 352.8,69.8 354.2,69.8 355.6,69.9 356.9,69.9 358.3,69.9 359.7,69.4 361.1,69.4 362.5,69.8 363.9,69.8 365.3,69.9 366.7,69.6 368.1,69.6 369.4,69.8 370.8,69.8 372.2,69.5 373.6,69.4 375.0,69.4 376.4,69.8 377.8,69.5 379.2,69.9 380.6,69.8 381.9,69.8 383.3,70.0 384.7,69.9 386.1,70.0 387.5,69.4 388.9,70.0 390.3,69.9 391.7,69.8 393.1,69.9 394.4,69.8 395.8,70.0 397.2,69.8 398.6,69.8 400.0,69.7"/>
+          </g>
+          <text class="val" x="193.5" y="232">door moves 0.25°</text>
+          <text x="200" y="254" text-anchor="middle">time (s), simulated push at 80 samples per second</text>
+        </g>
+      </svg>
+      <figcaption><b>Fig. 5.3</b> A simulated push through the analysis pipeline. The pressure drains within the first degree, so <strong>the force has to be read before the door moves</strong>.</figcaption>
+    </figure>
+    <div class="col">
+      <h3>What the model changed</h3>
+      <dl class="issues one">
+        <div><dt>We were reading force too late.</dt><dd>Our analysis read break-open force between 0.5° and 3° of swing, after about <strong>90% of the pressure had gone</strong> and while the door was accelerating. I changed my analysis to take the peak force before 0.25°, and all 16 tests pass. Josh and I settle the definition on Nov 20.</dd></div>
+        <div><dt>80 samples per second is enough.</dt><dd>I simulated the push with door inertia and hand tremor. 80 and 320 samples per second give the same force <strong>within 0.1 N</strong>; push speed matters more. That kept Josh's electronics unchanged.</dd></div>
+        <div><dt>The project claim got more honest.</dt><dd>A 10% error in airflow or gap area becomes a 21–23% error in pressure, and gap area alone moves the answer eightfold. I proposed changing the goal from predicting each door's pressure to <strong>explaining and ranking doors</strong>, and replacing an RMSE target that a model predicting zero would have passed.</dd></div>
+        <div><dt>The sensor design held up.</dt><dd>In the cold case the room sat at +0.886 Pa and the corridor at −1.185 Pa against outdoors. Only the <strong>2.071 Pa difference</strong> acts on the door, which confirmed a tube under the door instead of an outdoor reference.</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Plan</h3>
+    <ol class="phases">
+      <li class="cur"><span class="when">Nov · current</span><span class="h">Pilot and logger v2</span><span class="d">30 campus doors with an analog gauge, Nov 17–24. Two passes per door: latch held back for the first push, then the steady push to 70°. Enclosure v1 by Nov 24.</span></li>
+      <li><span class="when">Dec</span><span class="h">Slope test</span><span class="d">One door at five or more pressure levels set with a box fan. The fitted slope must land within 15% of 0.237 lbf/Pa; the intercept is the closer force. CONTAM model of the test room.</span></li>
+      <li><span class="when">By Jan 15</span><span class="h">Fixability test</span><span class="d">Predict a door's force after a closer adjustment from the same split, then measure it. Final proposal due.</span></li>
+      <li><span class="when">Feb – Apr</span><span class="h">Campus audit</span><span class="d">CONTAM model of the showcase building, with predicted pressures checked against logged ones. Presentation in April.</span></li>
+    </ol>
+  </div>
+
+  <div class="block">
+    <h3>How I worked</h3>
+    <div class="prose">
+      <p>Each CONTAM session follows a playbook I wrote: <strong>one dialog at a time, a screenshot before every OK, and a predicted number before every run</strong>. It caught three wrong program defaults before they reached a result. I logged 32 problems from the first session; <span class="k">19 are resolved</span>, 6 need one confirmation and 7 are waiting on a measurement or a person.</p>
+      <p>Two of my proposals go to Josh on Nov 20: the 0.25° break-open window and the shift from predicting each door's pressure to explaining and ranking doors.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Matthew Humphrey · mhumphrey34@gatech.edu · (252) 772-5435</span>
+  <span>Updated November 2026</span>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email'), el = document.getElementById('email');
+  if (!btn || !el) return;
+  btn.addEventListener('click', function () {
+    var ok = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+    var sel = function () { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; };
+    try { navigator.clipboard.writeText(el.textContent.trim()).then(ok, sel); } catch (e) { sel(); }
+  });
+})();
+</script>
+
+</body></html>
